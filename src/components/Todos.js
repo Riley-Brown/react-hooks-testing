@@ -3,17 +3,19 @@ import styled from 'styled-components';
 import TodoForm from './TodoForm';
 
 export default function Todo() {
-  const [state, setState] = useState({
-    todos: [],
-    working: 'testing 123'
-  });
+  const [todos, setTodos] = useState([]);
+
+  const addTodo = todo => {
+    setTodos([...todos, { todo }]);
+  };
+
   useEffect(() => {
-    console.log(state);
+    console.log(todos);
   });
   return (
     <div>
       <h1>Things to do</h1>
-      <TodoForm />
+      <TodoForm addTodo={addTodo} />
     </div>
   );
 }
