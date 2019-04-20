@@ -14,10 +14,19 @@ export default function Todos() {
     console.log(todos);
   });
   return (
-    <div>
+    <StyledTodos>
       <h1>Things to do</h1>
       <Todo todos={todos} />
       <TodoForm addTodo={addTodo} />
-    </div>
+    </StyledTodos>
   );
 }
+
+const StyledTodos = styled.div`
+  max-width: 700px;
+  margin: auto;
+  margin-top: 10%;
+  h1 {
+    text-align: center;
+  }
+`;

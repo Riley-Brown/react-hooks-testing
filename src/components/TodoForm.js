@@ -1,22 +1,22 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
 export default function TodoForm(props) {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
-  // const handleTitleChange = useCallback(e => setTitle(e.target.value), []);
-  // const handleBodyChange = useCallback(e => setBody(e.target.value), []);
-  const newTodo = { title, body };
-
   const handleSubmit = e => {
     e.preventDefault();
+    const date = new Date();
+    const newTodo = { title, body, date };
     props.addTodo(newTodo);
     setTitle('');
     setBody('');
   };
 
   return (
-    <div>
+    <StyledTodoForm>
+      <h4>Add New Todo</h4>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -32,8 +32,33 @@ export default function TodoForm(props) {
           value={body}
           name="Body"
         />
-        <input type="submit" value="Add todo" />
+        <input type="submit" value="Add todo" id="submit" />
       </form>
-    </div>
+    </StyledTodoForm>
   );
 }
+
+const StyledTodoForm = styled.div`
+  margin-top: 80px;
+  h4 {
+    text-align: center;
+    opacity: 0.8;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    input {
+      border-radius: 4px;
+      padding: 10px;
+      border: none;
+      margin-bottom: 20px;
+      outline: none;
+    }
+    #submit {
+      background: #f4511e;
+      cursor: pointer;
+      color: #fff;
+      font-size: 1.3rem;
+    }
+  }
+`;
