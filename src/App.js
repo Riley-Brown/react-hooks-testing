@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Todo from './components/Todos';
+import Todos from './components/Todos';
 class App extends Component {
   render() {
-    return <Todo />;
+    return <Todos />;
   }
 }
 
