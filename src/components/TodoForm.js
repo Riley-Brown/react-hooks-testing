@@ -8,7 +8,7 @@ export default function TodoForm(props) {
   // const handleBodyChange = useCallback(e => setBody(e.target.value), []);
   const newTodo = { title, body };
 
-  const handleSubmit = (e, todo) => {
+  const handleSubmit = e => {
     e.preventDefault();
     props.addTodo(newTodo);
     setTitle('');
